@@ -6,4 +6,16 @@ function sortear () {
     alert(`quantidade: ${quantidade}`);
     alert(`Comeca de: ${de}`);
     alert(`Vai ate: ${ate}`);
+
+    listaSorteados = [];
+    while (listaSorteados.length < quantidade) {
+    let numSorteado = parseInt(Math.random() * (ate - de + 1));
+    listaSorteados.push(numSorteado);
+    alert(`Lista sorteados: ${listaSorteados}`);
+    }
+}
+
+
+function mostrarTexto() {
+    
 }
