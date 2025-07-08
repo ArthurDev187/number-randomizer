@@ -1,47 +1,30 @@
 function sortear() {
     let quantidade = parseInt(document.getElementById('quantidade').value);
-    let de  = parseInt(document.getElementById('de').value);
+    let de = parseInt(document.getElementById('de').value);
     let ate = parseInt(document.getElementById('ate').value);
-    let numeroSorteado
-    let listaSorteados = [];
+    let listaNumeros = [];
+    let textoResultado = document.getElementById('resultado');
+
+    console.log(`quantidade: ${quantidade}`);
+    console.log(`de: ${de}`);
+    console.log(`ate: ${ate}`);
+
     for (let i = 0; i < quantidade; i++) {
-        numeroSorteado = obterNumeroAleatorio(de, ate);
-        while (listaSorteados.includes(numeroSorteado)) {
+        let numeroSorteado = obterNumeroAleatorio(de, ate);
+        while (listaNumeros.includes(numeroSorteado)) {
             numeroSorteado = obterNumeroAleatorio(de, ate);
         }
-        listaSorteados.push(numeroSorteado);
+        listaNumeros.push(numeroSorteado);
     }
-    let resultado = document.getElementById('resultado').getAttribute('label');
-    resultado.textContent = `Números sorteados:  ${listaSorteados}`
-    mudarStatusBotao();
-}
+    
+    console.log(`Lista numeros sorteados: ${listaNumeros}`);
+    
+    textoResultado.innerHTML = `<label class="texto__paragrafo">Números sorteados:  ${listaNumeros}</label>`
 
+
+    
+}
 
 function obterNumeroAleatorio(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-
-
-function mudarStatusBotao() {
-    let btnReiniciar = document.getElementById('btn-reiniciar');
-    btnReiniciar.classList.remove('container__botao-desabilitado');
-    btnReiniciar.classList.add('container__botao')
-    if (btnReiniciar.classList.includes('container__botao-desabilitado')) {
-        btnReiniciar.classList.remove('container__botao-desabilitado');
-        btnReiniciar.classList.add('container__botao');
-    } else {
-        btnReiniciar.classList.remove('container__botao');
-        btnReiniciar.classList.add('container__botao-desabilitado');
-    }
-
-}
-
-
-function reiniciar() {
-    document.getElementById('quantidade').value = '';
-    document.getElementById('de').value = '';
-    document.getElementById('ate').value = '';
-    mudarStatusBotao();
-    
+    return Math.floor(Math.random() * (max - min + 1) + min);
 }
